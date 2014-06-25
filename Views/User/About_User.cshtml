@@ -1,0 +1,36 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com - About</title>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="index_user">Home</a></li>
+            <li><a href="User/Buy_user">Buy</a></li>
+            <li><a href="User/About_user" class="current">About</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section Login
+{
+    <form method="POST" action="Logout">
+        <label style="padding:20px 30px">User: Normal</label><input type="submit" value="Logout" name="submit" />
+    </form>
+}
+@section InputFields
+{
+    <h1>About Us</h1>
+    <img src="images/mo_image_04.jpg" alt="image" />
+    <p>Name: Mohsin Khan<br>RollNo: Bitf11a041</p>
+    <p>Contact: 03314111154</p>
+    <p>Email: mohsin_khan310@yahoo.com</p>
+}
+@section Scripts
+{
+
+}

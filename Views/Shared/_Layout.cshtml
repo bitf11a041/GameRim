@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<title>GameRim.com -Home </title>-->
+    @RenderSection("Title",required:false)
+    <meta name="keywords" content="Bitf11a041" />
+    <meta name="description" content="EAD Project" />
+    <link href="~/Content/mo_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/gallery_style.css" />
+    <link type="text/css" href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/jquery.fancybox-thumbs.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/jquery.fancybox-buttons.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                maxWidth: 800,
+                maxHieght: 600,
+                fitToView: false,
+                width: '70%',
+                height: '70%',
+                autoSize: true,
+                closeClick: true,
+                openEffect: 'none',
+                closeEffect: 'none'
+
+            });
+        });
+    </script>
+    
+    @RenderSection("Scripts", required: false)
+</head>
+<body>
+    <div id="mo_container">
+        <div id="mo_top_panel">
+            <div id="mo_header_section">
+                <div id="mo_header">
+                    <span style="color:#ffffff">Game</span><span style="color:#7A8B8B">Rim</span>
+                </div>
+            </div> <!-- end of header section -->
+
+            <div id="mo_menu_login_section">
+                <div id="mo_menu_section">
+                   <!-- <div id="mo_menu_panel">
+                        <ul>
+                            <li><a href="index.html" class="current">Home</a></li>
+                            <li><a href="About.html">About</a></li>
+                            <li><a href="Register.html">Register</a></li>
+                        </ul>
+                    </div> <!-- end of menu -->
+                    @RenderSection("Menu",required:false)
+
+                </div>
+                <div id="mo_login_section">
+                   <!-- <form method="POST" action="Verify">
+                        <label>Email Address:</label><input type="text" name="email" id="email" class="input_field" /><label>Password:</label><input type="password" name="password" class="input_field" id="pass" /><input type="submit" value="Sign In" name="submit" onclick="return Check_user()" />
+
+                    </form>-->
+                    @RenderSection("Login",required:false)
+                </div>
+            </div> <!-- end of menu login section -->
+        </div> <!-- end of top panel -->
+
+        <div id="mo_gallery_panel">
+            <div id="gallery">
+                <div id="imagearea">
+                    <div id="image">
+                        <div onclick="javascript:slideShow.nav(-1)" class="imgnav " id="previmg"></div>
+                        <div onclick="javascript:slideShow.nav(1)" class="imgnav " id="nextimg"></div>
+                    </div>
+                </div>
+                <div id="thumbwrapper">
+                    <div id="thumbarea">
+                        <ul id="thumbs">
+                            <li value="1"><img src="~/images/thumbs/1.jpg" width="179" height="100" alt="" /></li>
+                            <li value="2"><img src="~/images/thumbs/2.jpg" width="179" height="100" alt="" /></li>
+                            <li value="3"><img src="~/images/thumbs/3.jpg" width="179" height="100" alt="" /></li>
+                            <li value="4"><img src="~/images/thumbs/4.jpg" width="179" height="100" alt="" /></li>
+                            <li value="5"><img src="~/images/thumbs/5.jpg" width="179" height="100" alt="" /></li>
+                            <li value="6"><img src="~/images/thumbs/6.jpg" width="179" height="100" alt="" /></li>
+                            <li value="7"><img src="~/images/thumbs/7.jpg" width="179" height="100" alt="" /></li>
+                            <li value="8"><img src="~/images/thumbs/8.jpg" width="179" height="100" alt="" /></li>
+                            <li value="9"><img src="~/images/thumbs/9.jpg" width="179" height="100" alt="" /></li>
+                            <li value="10"><img src="~/images/thumbs/10.jpg" width="179" height="100" alt="" /></li>
+                            <li value="11"><img src="~/images/thumbs/11.jpg" width="179" height="100" alt="" /></li>
+                            <li value="12"><img src="~/images/thumbs/12.jpg" width="179" height="100" alt="" /></li>
+                            <li value="13"><img src="~/images/thumbs/13.jpg" width="179" height="100" alt="" /></li>
+                            <li value="14"><img src="~/images/thumbs/14.jpg" width="179" height="100" alt="" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                var imgid = 'image';
+                var imgdir = '../images/fullsize';
+                var imgext = '.jpg';
+                var thumbid = 'thumbs';
+                var auto = true;
+                var autodelay = 5;
+            </script>
+            <script type="text/javascript" src="~/Scripts/slide.js"></script>
+
+        </div>
+
+        <div id="mo_content_panel_1">
+
+            <div id="mo_news_section">
+                <h1>Profile Picture</h1>
+                <div class="mo_news_box">
+                    @RenderSection("News",required:false)
+                </div>
+            </div><!-- end of news section -->
+
+            <div id="mo_section_1_1">
+                <!--<h1>Search Games</h1>
+                <form method="POST" action="Search">
+                    <div class="left_column">
+                        <div class="form_row"> <label>Game Name: </label><input type="text" name="name" value="" id="name" /> </div>
+                        <div class="form_row"> <label>Game Id: </label><input type="text" name="id" value="" id="g_id" /> </div>
+                        <div class="form_row"> <label>Rating: </label><input type="text" name="rating" value="" id="rating" /> </div>
+                    </div>
+                    <div class="right_column">
+                        <div class="form_row"> <label>Min Price: </label><input type="text" name="min_price" value="" id="min" /> </div>
+                        <div class="form_row"> <label>Max Price: </label><input type="text" name="max_price" value="" id="max" /> </div>
+                        <div class="form_row"> <label>Platform: </label><input type="text" name="platform" value="" id="platform" /> </div>
+                        <div class="form_row">
+                            <input type="submit" value="Search" name="submit" class="submit_btn_02" onclick="return Check()" />
+                        </div>
+                    </div>
+
+                </form>-->
+                @RenderSection("InputFields",required:false)  
+            </div><!-- end of section 1 -->
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div>
+
+        <div id="mo_content_panel_2">
+            <div class="mo_section_2">
+
+
+                <a class="fancybox" rel="group" href="../images/mo_image_01.jpg">
+                    <img src="../images/mo_image_01.jpg" alt="image" /></a>
+                    <h4>Assassin's Creed 4: Black Flag </h4>
+                    <p>Assassin's Creed IV: Black Flag is set in the Caribbean on multiple islands including playable areas in Kingston, Havana and Nassau. The Caribbean ocean is an explorable region via Kenway's ship Jackdaw. Smaller islands and locations can be visited, and underwater locations can be explored for the first time in the Assassin's Creed series.</p>
+                    <div class="readmore"><a href="http://www.ign.com/wikis/assassins-creed-4-black-flag">Read more</a></div>
+            </div>
+            <div class="mo_section_2">
+                <a class="fancybox" rel="group" href="../images/mo_image_02.jpg">
+                    <img src="../images/mo_image_02.jpg" alt="image" />
+                </a>
+                <h4>Gears of War 3</h4>
+                <p>Gears of War 3, fight on as Marcus Fenix, the grizzled war hero and leader of Delta Squad. Eighteen months after the fall of the last human city, the war against the Locust rages on. Meanwhile, deep beneath the surface, a fearsome new threat is infecting the planet from within. With survivors scattered and civilization in ruins, time is running out for Marcus and his comrades as they fight to save the human race.</p>
+                <div class="readmore"><a href="http://www.ign.com/games/gears-of-war-3/xbox-360-14304771">Read more</a></div>
+            </div>
+            <div class="mo_section_2">
+
+                <a class="fancybox" rel="group" href="../images/mo_image_03.jpg">
+                    <img src="../images/mo_image_03.jpg" alt="image" />
+                </a>
+                <h4>GTA IV</h4>
+                <p>In this fourth installment of the popular series, players take on the role of Niko Bellic, a rough-around-the-edge chap from Eastern Europe. Niko has arrived in America, in Liberty City -- a land full of promise and opportunity. His cousin convinced him to emigrate, to join him in his mansion and life of luxury, but as soon as he steps off the boat, Niko discovers the truth about the American way. Still, the wealth, the comfort, the bliss of the good life, it all really is here .... And it's all for the taking. </p>
+                <div class="readmore"><a href="http://www.ign.com/games/grand-theft-auto-iv/xbox-360-827005">Read more</a></div>
+            </div>
+
+            <div class="cleaner_with_height">&nbsp;</div>
+        </div> <!-- end of content panel 2 -->
+
+        <div id="mo_footer_panel">
+            Copyright © 2014 <a href="index">GameRim</a> | Website by <a href=#" target="_blank">Mohsin Khan</a>
+        </div>
+    </div> <!-- end of container -->
+</body>
+</html>

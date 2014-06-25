@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Ead_Project_version_1._1.Models.ItemInCart>
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com -User Home </title>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="../User/index_user" class="current">Home</a></li>
+            <li><a href="../User/Buy_user">Buy</a></li>
+            <li><a href="../User/About_user">About</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section InputFields
+{
+    <h2>CheckOut</h2>
+
+    <table border="1">
+        <tr>
+            <th>Game Name</th>
+            <th>Game Price</th>
+            <th>Game Quatity</th>
+        </tr>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Game.Game_Name</td>
+                <td>@p.Game.Price</td>
+                <td>@p.Quantity</td>
+            </tr> 
+        }
+    </table>
+   
+}
+

@@ -1,0 +1,110 @@
+﻿@model Ead_Project_version_1._1.Models.SiteUser
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com - Register</title>
+}
+@section Scripts
+{
+    <script>
+        function Check() {
+            if (document.getElementById("name").value == "" || document.getElementById("pass").value == "" || document.getElementById("pass_c").value == "" || document.getElementById("ccno").value == "" || document.getElementById("house").value == "" || document.getElementById("street").value == "" || document.getElementById("city").value == "" || document.getElementById("email").value == "") {
+                alert("Fill In The Entire Form!");
+                return false;
+            }
+            else if (document.getElementById("pass").value != document.getElementById("pass_c").value) {
+                alert("Password Fields Do Not Match!");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+            $('#checking').hide();
+
+            $('#b1').click(function () {
+
+                var email = $('#email').val();
+
+                //alert('User Name ='+ userName);
+                $('#checking').show();
+                $.getJSON("/home/CheckUserName?Email=" + email, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("User already exists in database");
+
+                    }
+                    if(!data) {
+                        $('#result').text("User Name is available");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="index">Home</a></li>
+            <li><a href="Home/About">About</a></li>
+            <li><a href="Home/Register" class="current">Register</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section InputFields
+{
+    <h1>Register</h1>
+    <div id="checking">Checking...</div>
+    <div id="result"></div>
+    <!--<form method="POST" action="/Home/Register_User">
+        <div class="left_column">
+            <div class="form_row"> <label>User name: </label><input type="text" name="name" value="" id="name" /> </div>
+            <div class="form_row"> <label>Password: </label><input type="password" name="pass" value="" id="pass" /> </div>
+            <div class="form_row"> <label>Confirm Password: </label><input type="password" name="password1" value="" id="pass_c" /> </div>
+            <span class="form_row"> <label>Email: </label><input type="text" name="email" value="" id="email" /> <input type="button" id="b1" value="Check"style="width:100px;height:25px"/></span>
+            <div class="form_row"> <label>Credit Card No: </label><input type="text" name="ccno" value="" id="ccno" /> </div>
+        </div>
+        <div class="right_column">
+            <div class="form_row"> <label>City: </label><input type="text" name="city" value="" id="city" /> </div>
+            <div class="form_row"> <label>StreetNo: </label><input type="text" name="street" value="" id="street" /> </div>
+            <div class="form_row"> <label>HouseNo: </label><input type="text" name="house" value="" id="house" /> </div>
+
+            <div class="form_row">
+                <input type="submit" value="Register" name="submit" class="submit_btn_02" onclick="return Check()" />
+            </div>
+        </div>
+    </form>-->
+    @Html.ValidationSummary()
+    @using (Html.BeginForm("Register_User", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="left_column">
+            <div class="form_row"> <label>User name: </label>@Html.TextBox("User_Name","")<br />@Html.ValidationMessage("User_Name")</div>
+            <div class="form_row"> <label>Password: </label>@Html.Password("Password", "")<br />@Html.ValidationMessage("Password") </div>
+            <div class="form_row"> <label>Confirm Password: </label>@Html.Password("password1", "")<!--<input type="password" name="password1" value="" id="pass_c" />--> </div>
+            <span class="form_row"> <label>Email: </label>@Html.TextBox("Email", "")<br />@Html.ValidationMessage("Email")<input type="button" id="b1" value="Check"style="width:100px;height:25px"/></span>
+            <div class="form_row"> <label>Credit Card No: </label>@Html.TextBox("CreditCard_No", "")<br />@Html.ValidationMessage("CreditCard_No") </div>
+        </div>
+        <div class="right_column">
+            <div class="form_row"> <label>City: </label>@Html.TextBox("City", "")<br />@Html.ValidationMessage("City") </div>
+            <div class="form_row"> <label>StreetNo: </label>@Html.TextBox("Street", "")<br />@Html.ValidationMessage("Street") </div>
+            <div class="form_row"> <label>HouseNo: </label>@Html.TextBox("House", "")<br />@Html.ValidationMessage("House") </div>
+            <div class="form_row"> <label>Upload Your Picture: </label><input type="file" name="profile" id="profile" /> </div>
+
+            <div class="form_row">
+                <input type="submit" value="Register" name="submit" class="submit_btn_02" onclick="return Check()" />
+            </div>
+        </div>
+    }
+    @Scripts.Render("~/bundles/jqueryval")
+}

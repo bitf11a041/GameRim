@@ -1,0 +1,127 @@
+﻿@model Ead_Project_version_1._1.Models.Game
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com - Admin Page </title>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="index">Add Games</a></li>
+            <li><a href="Admin/Admin_Delete">Delete Games</a></li>
+            <li><a href="Admin/Admin_Update" class="current">Update Games</a></li>
+            <li><a href="Admin/Admin_Query">Query Page</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section Login
+{
+    <form method="POST" action="../Admin/Logout">
+        <label style="padding:20px 30px">User: Admin</label><input type="submit" value="Logout" name="submit" />
+    </form>
+}
+@section InputFields
+{
+<h2>Edit Game</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <div class="left_column">
+            <div class="form_row">
+                @Html.LabelFor(model => model.Game_Id)
+                @Html.EditorFor(model => model.Game_Id)
+                @Html.ValidationMessageFor(model => model.Game_Id)
+            </div>
+
+            <div class="form_row">
+                @Html.LabelFor(model => model.Game_Name)
+                @Html.EditorFor(model => model.Game_Name)
+                @Html.ValidationMessageFor(model => model.Game_Name)
+            </div>
+
+            <div class="form_row">
+                @Html.LabelFor(model => model.Rating)
+                @Html.EditorFor(model => model.Rating)
+                @Html.ValidationMessageFor(model => model.Rating)
+            </div>
+
+            <div class="form_row">
+                @Html.LabelFor(model => model.Price)
+                @Html.EditorFor(model => model.Price)
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+        
+            <div class="form_row">
+                @Html.LabelFor(model => model.Release_Date)
+                @Html.EditorFor(model => model.Release_Date)
+                @Html.ValidationMessageFor(model => model.Release_Date)
+            </div>
+
+            <div class="form_row">
+                @Html.LabelFor(model => model.Discription)
+                @Html.EditorFor(model => model.Discription)
+                @Html.ValidationMessageFor(model => model.Discription)
+            </div>
+            <div class="form_row">
+                @Html.LabelFor(model => model.Cpu_Req)
+                @Html.EditorFor(model => model.Cpu_Req)
+                @Html.ValidationMessageFor(model => model.Cpu_Req)
+            </div>
+            <div class="form_row">
+                <input type="submit" value="Save" />
+            </div>
+            </div>
+            <div class="right_column">
+                <div class="form_row">
+                    @Html.LabelFor(model => model.Ram_Req)
+                    @Html.EditorFor(model => model.Ram_Req)
+                    @Html.ValidationMessageFor(model => model.Ram_Req)
+                </div>
+
+                <div class="form_row">
+                    @Html.LabelFor(model => model.Hard_Req)
+                    @Html.EditorFor(model => model.Hard_Req)
+                    @Html.ValidationMessageFor(model => model.Hard_Req)
+                </div>
+
+                <div class="form_row">
+                    @Html.LabelFor(model => model.GraphicCard_Req)
+                    @Html.EditorFor(model => model.GraphicCard_Req)
+                    @Html.ValidationMessageFor(model => model.GraphicCard_Req)
+                </div>
+
+                <div class="form_row">
+                    @Html.LabelFor(model => model.Developer_Id, "Developer")
+                    @Html.DropDownList("Developer_Id", String.Empty)
+                    @Html.ValidationMessageFor(model => model.Developer_Id)
+                </div>
+
+                <div class="form_row">
+                    @Html.LabelFor(model => model.PlatForm)
+                    @Html.EditorFor(model => model.PlatForm)
+                    @Html.ValidationMessageFor(model => model.PlatForm)
+                </div>
+
+                <div class="form_row">
+                    @Html.LabelFor(model => model.Category)
+                    @Html.EditorFor(model => model.Category)
+                    @Html.ValidationMessageFor(model => model.Category)
+                </div>
+                <div class="form_row">
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+}
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

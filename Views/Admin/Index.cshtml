@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Ead_Project_version_1._1.Models.Game>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com - Admin Page </title>
+    <style>
+    table {
+        border: 1px solid black;
+        table-layout: fixed;
+        width: 70px;
+    }
+
+    th, td {
+        border: 1px solid black;
+        overflow: hidden;
+        width: 50px;
+        height:30px;
+    }
+</style>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="../Admin/Index" class="current">Add Games</a></li>
+            <li><a href="../Admin/Admin_Delete">Delete Games</a></li>
+            <li><a href="../Admin/Admin_Update">Update Games</a></li>
+            <li><a href="../Admin/Admin_Query">Query Page</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section Login
+{
+    <form method="POST" action="../Admin/Logout">
+        <label style="padding:20px 30px">User: Admin</label><input type="submit" value="Logout" name="submit" />
+    </form>
+}
+@section InputFields
+{
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Game_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Release_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpu_Req)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ram_Req)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hard_Req)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlatForm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Release_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpu_Req)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ram_Req)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hard_Req)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlatForm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Game_Id  }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Game_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Game_Id })
+            </td>
+        </tr>
+    }
+</table>
+}
+
+@section Scripts
+{
+    <script>
+        function Check() {
+            if (document.getElementById("Game_Name").value == "" || document.getElementById("Rating").value == "" || document.getElementById("Cpu_Req").value == "" || document.getElementById("Ram_Req").value == "" || document.getElementById("Hard_Req").value == "" || document.getElementById("GraphicCard_Req").value == "" || document.getElementById("Developer_Id").value == "" || document.getElementById("Platform").value == "" || document.getElementById("Price").value == "" || document.getElementById("Category").value == "") {
+                alert("Fill in the form Completely!");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+}

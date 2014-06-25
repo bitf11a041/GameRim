@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd7ab7ec8c3f4cccb921e87ad4c17519" Name="Diagram1">
+        <EntityTypeShape EntityType="GameRimEntityModel.Cart" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameRimEntityModel.Developer" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameRimEntityModel.Game" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameRimEntityModel.ItemInCart" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameRimEntityModel.SiteUser" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="GameRimEntityModel.FK_Cart_To_SiteUser" ManuallyRouted="false" />
+        <AssociationConnector Association="GameRimEntityModel.FK_ItemInCart_To_Cart" ManuallyRouted="false" />
+        <AssociationConnector Association="GameRimEntityModel.FK_Game_To_Developer" ManuallyRouted="false" />
+        <AssociationConnector Association="GameRimEntityModel.FK_ItemInCart_To_Game" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

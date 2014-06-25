@@ -1,0 +1,144 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com -Home</title>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="../Home/index" class="current">Home</a></li>
+            <li><a href="../Home/About">About</a></li>
+            <li><a href="../Home/Register">Register</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section Login
+{
+    <!--<form method="POST" action="/Home/Verify">
+        <label>Email Address:</label><input type="text" name="email" id="email" class="input_field" /><label>Password:</label><input type="password" name="pass" class="input_field" id="pass" /><input type="submit" value="Sign In" name="submit" onclick="return Check_user()" />
+    </form>-->
+    @using (Html.BeginForm("Verify","Home",FormMethod.Post))
+    {
+        @Html.Label("Email Address: ")<!--<label>Email Address:</label>-->@Html.TextBox("Email", "", new {Class="input_field"})<!--<input type="text" name="email" id="email" class="input_field" />-->
+        @Html.Label("Password: ")<!--<label>Password:</label>-->@Html.Password("Password","",new {Class="input_field"})<!--<input type="password" name="pass" class="input_field" id="pass" />-->
+        <input type="submit" value="Sign In" name="submit" " /><!--onclick="return Check_user()-->
+    }
+}
+@section InputFields
+{
+    <h1>Search Games</h1>
+    <!--<form method="POST" action="/Home/Search">
+        <div class="left_column">
+            <div class="form_row"> <label>Game Name: </label><input type="text" name="name" value="" id="name" /> </div>
+            <div class="form_row"> <label>Game Id: </label><input type="text" name="g_id" value="" id="g_id" /> </div>
+            <div class="form_row"> <label>Rating: </label><input type="text" name="rating" value="" id="rating" /> </div>
+        </div>
+        <div class="right_column">
+            <div class="form_row"> <label>Min Price: </label><input type="text" name="min_price" value="" id="min_price" /> </div>
+            <div class="form_row"> <label>Max Price: </label><input type="text" name="max_price" value="" id="max_price" /> </div>
+            <div class="form_row"> <label>Platform: </label><input type="text" name="platform" value="" id="platform" /> </div>
+            <div class="form_row">
+                <input type="submit" value="Search" name="submit" class="submit_btn_02" onclick="return Check()" />
+            </div>
+        </div>
+
+    </form>-->
+    @using(Html.BeginForm())
+    {
+        <div class="left_column">
+            <div class="form_row"> @Html.Label("Game Name: ")<!--<label>Game Name: </label>-->@Html.TextBox("Game_Name","")<!--<input type="text" name="name" value="" id="name" />--> </div>
+            <div class="form_row"> @Html.Label("Game Id: ")<!--<label>Game Id: </label>-->@Html.TextBox("Game_Id","")<!--<input type="text" name="g_id" value="" id="g_id" />--> </div>
+            <div class="form_row"> @Html.Label("Rating: ")<!--<label>Rating: </label>-->@Html.TextBox("Rating")<!--<input type="text" name="rating" value="" id="rating" />--> </div>
+        </div>
+        <div class="right_column">
+            <div class="form_row"> @Html.Label("Min Price: ")<!--<label>Min Price: </label>-->@Html.TextBox("min_price")<!--<input type="text" name="min_price" value="" id="min_price" />--> </div>
+            <div class="form_row"> @Html.Label("Max Price: ")<!--<label>Max Price: </label>-->@Html.TextBox("max_price")<!--<input type="text" name="max_price" value="" id="max_price" />--> </div>
+            <div class="form_row"> @Html.Label("Platform: ")<!--<label>Platform: </label>-->@Html.TextBox("PlatForm")<!--<input type="text" name="platform" value="" id="platform" />--> </div>
+            <div class="form_row">
+                <input type="button" value="Search" id="submit" name="submit" class="submit_btn_02"  /><!--onclick="return Check()"-->
+            </div>
+        </div>  
+        <div id="result">
+
+        </div> 
+<div>
+
+    <div id="result"></div>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+           // $('#checking').hide();
+            $('#submit').click(function () {
+
+                var game = $('#name').val();
+                //var json=
+
+                alert('User Name =' + game);
+                // $('#checking').show();
+
+                $.getJSON("../Home/SearchResult?name=" + game, function (data) {
+                    $.each()
+                    //$('#checking').hide();
+                    /*if (data != null) {
+                        $('#result').text("i am fine "+data[0].Game_Name);
+
+                    }
+                    else {
+                        $('#result').text("User Name is available");
+                    }*/
+                    if (data) {
+                        var div = $('#result');
+
+                        div.html("<br/> " + "Data received from DB: " + "<br/>");
+                        $.each(data, function (i, item) {
+                            alert(item.Game_Name);
+                            div.append("<br/>" + "Game Name: " + item.Game_Name);
+                        });
+                    }
+                    else {
+                        $('#result').text("No Data is Avaiable");
+                    }
+                });
+            });
+            });
+    </script>
+</div>
+    }
+}
+@section Scripts
+{
+
+    <script>
+        function Check_user() {
+            if (document.getElementById("email").value == "" || document.getElementById("pass").value == "") {
+                alert("Enter Values in both Email an Password Fields!");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        function Check() {
+            if (document.getElementById("name").value == "" && document.getElementById("g_id").value == "" && document.getElementById("min").value == "" && document.getElementById("max").value == "" && document.getElementById("platform").value == "" && document.getElementById("rating").value == "") {
+                alert("Fill Atleast One Value!");
+                return false;
+            }
+            else if (document.getElementById("min").value == "" && !(document.getElementById("max").value == "")) {
+                alert("Fill In The Min Price!");
+                return false;
+            }
+            else if (!document.getElementById("min").value == "" && (document.getElementById("max").value == "")) {
+                alert("Fill In The Max Price!");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+}

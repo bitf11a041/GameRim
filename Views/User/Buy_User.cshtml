@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Ead_Project_version_1._1.Models.Game>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title
+{
+    <title>GameRim.com -User Buy </title>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="index_user">Home</a></li>
+            <li><a href="User/Buy_user" class="current">Buy</a></li>
+            <li><a href="User/About_user">About</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section Login
+{
+    <form method="POST" action="../User/Logout">
+        <label style="padding:20px 30px">User: Normal</label><input type="submit" value="Logout" name="Logout" />
+    </form>
+}
+@section InputFields
+{
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Check Out", "CheckOut")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Game_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlatForm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlatForm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.ActionLink("Add To Cart", "AddToCart", new { id = item.Game_Id }) |
+                    @Html.ActionLink("Delete From Cart", "DeleteFromCart", new { id = item.Game_Id })
+                </td>
+            </tr>
+        }
+    </table>
+}
+@section Scripts
+{
+    <script>
+        function Check() {
+            if (document.getElementById("g_id").value == "" || document.getElementById("q").value == "") {
+                alert("Fill in the Form Completly");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+}

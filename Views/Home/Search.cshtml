@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com -Home</title>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="../Home/index" class="current">Home</a></li>
+            <li><a href="../Home/About">About</a></li>
+            <li><a href="../Home/Register">Register</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+h1>Search Games</h1>
+@section InputFields
+{
+    <h1>Search Games</h1>
+    <table border="1">
+        <tr>
+            <th>Game Name</th>
+            <th>Game Rating</th>
+            <th>Game Price</th>
+            <th>Release Date</th>
+            <th>Platform</th>
+            <th>Category</th>
+        </tr>
+        
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Game_Name</td>
+                <td>@p.Rating</td>
+                <td>@p.Price</td>
+                <td>@p.Release_Date</td>
+                <td>@p.PlatForm</td>
+                <td>@p.Category</td>
+            </tr>
+        }
+    </table>
+}
+@section Scripts
+{
+    <script>
+        function Check() {
+            if (document.getElementById("name").value == "" && document.getElementById("g_id").value == "" && document.getElementById("min").value == "" && document.getElementById("max").value == "" && document.getElementById("platform").value == "" && document.getElementById("rating").value == "") {
+                alert("Fill Atleast One Value!");
+                return false;
+            }
+            else if (document.getElementById("min").value == "" && !(document.getElementById("max").value == "")) {
+                alert("Fill In The Min Price!");
+                return false;
+            }
+            else if (!document.getElementById("min").value == "" && (document.getElementById("max").value == "")) {
+                alert("Fill In The Max Price!");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+}

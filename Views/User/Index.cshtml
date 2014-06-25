@@ -1,0 +1,70 @@
+﻿@model Ead_Project_version_1._1.Models.SiteUser
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <title>GameRim.com -User Home </title>
+}
+@section Menu
+{
+    <div id="mo_menu_panel">
+        <ul>
+            <li><a href="../User/Index" class="current">Home</a></li>
+            <li><a href="../User/Buy_user">Buy</a></li>
+            <li><a href="../User/About_user">About</a></li>
+        </ul>
+    </div> <!-- end of menu -->
+}
+@section Login
+{
+    <form method="POST" action="../User/Logout">
+        <label style="padding:20px 30px">User: Normal</label><input type="submit" value="Logout" name="Logout" />
+    </form>
+}
+@section InputFields
+{
+    <h1>Search Games</h1>
+    <form method="POST" action="Search_User">
+        <div class="left_column">
+            <div class="form_row"> <label>Game Name: </label><input type="text" name="Game_Name" value="" id="Game_Name" /> </div>
+            <div class="form_row"> <label>Game Id: </label><input type="text" name="Game_Id" value="" id="Game_Id" /> </div>
+            <div class="form_row"> <label>Rating: </label><input type="text" name="Rating" value="" id="Rating" /> </div>
+        </div>
+        <div class="right_column">
+            <div class="form_row"> <label>Min Price: </label><input type="text" name="Min_Price" value="" id="Min_Price" /> </div>
+            <div class="form_row"> <label>Max Price: </label><input type="text" name="Max_Price" value="" id="Max_Price" /> </div>
+            <div class="form_row"> <label>Platform: </label><input type="text" name="Platform" value="" id="Platform" /> </div>
+            <div class="form_row">
+                <input type="submit" value="Search" name="submit" class="submit_btn_02" onclick="return Check()" />
+            </div>
+        </div>
+
+    </form>
+}
+@section News
+{
+    <img src=@Model.Profile_Pic>
+}
+@section Scripts
+{
+    <script>
+        function Check() {
+            if (document.getElementById("name").value == "" && document.getElementById("g_id").value == "" && document.getElementById("min").value == "" && document.getElementById("max").value == "" && document.getElementById("platform").value == "" && document.getElementById("rating").value == "") {
+                alert("Fill Atleast One Value!");
+                return false;
+            }
+            else if (document.getElementById("min").value == "" && !(document.getElementById("max").value == "")) {
+                alert("Fill In The Min Price!");
+                return false;
+            }
+            else if (!document.getElementById("min").value == "" && (document.getElementById("max").value == "")) {
+                alert("Fill In The Max Price!");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>    
+}
