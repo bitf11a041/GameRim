@@ -19,7 +19,7 @@
 @section Login
 {
     <form method="POST" action="../User/Logout">
-        <label style="padding:20px 30px">User: Normal</label><input type="submit" value="Logout" name="Logout" />
+        <label style=" font-size:larger; padding:20px 30px">User: @Model.User_Name</label><input type="submit" value="Logout" name="Logout" />
     </form>
 }
 @section InputFields
@@ -44,7 +44,12 @@
 }
 @section News
 {
-    <img src=@Model.Profile_Pic>
+    <div>
+        <img src=@Model.Profile_Pic width="200" height="200" />
+    </div>
+    <div>
+        <label style="font-size:medium">@Model.User_Name</label>
+    </div>
 }
 @section Scripts
 {
