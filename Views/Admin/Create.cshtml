@@ -4,130 +4,104 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section InputFields
+{
+<h2>Edit Game</h2>
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    <div class="left_column">
 
-    <fieldset>
-        <legend>Game</legend>
-
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Game_Id)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Game_Id)
             @Html.ValidationMessageFor(model => model.Game_Id)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Game_Name)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Game_Name)
             @Html.ValidationMessageFor(model => model.Game_Name)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Rating)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Rating)
             @Html.ValidationMessageFor(model => model.Rating)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Price)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Price)
             @Html.ValidationMessageFor(model => model.Price)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Release_Date)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Release_Date)
             @Html.ValidationMessageFor(model => model.Release_Date)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Discription)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Discription)
             @Html.ValidationMessageFor(model => model.Discription)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Cpu_Req)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Cpu_Req)
             @Html.ValidationMessageFor(model => model.Cpu_Req)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Ram_Req)
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
-        <div class="editor-field">
+    </div>
+    <div class="right_column">
+        <div class="form_row">
+            @Html.LabelFor(model => model.Ram_Req)
             @Html.EditorFor(model => model.Ram_Req)
             @Html.ValidationMessageFor(model => model.Ram_Req)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Hard_Req)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Hard_Req)
             @Html.ValidationMessageFor(model => model.Hard_Req)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.GraphicCard_Req)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.GraphicCard_Req)
             @Html.ValidationMessageFor(model => model.GraphicCard_Req)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Developer_Id, "Developer")
-        </div>
-        <div class="editor-field">
             @Html.DropDownList("Developer_Id", String.Empty)
             @Html.ValidationMessageFor(model => model.Developer_Id)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.PlatForm)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.PlatForm)
             @Html.ValidationMessageFor(model => model.PlatForm)
         </div>
 
-        <div class="editor-label">
+        <div class="form_row">
             @Html.LabelFor(model => model.Category)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Category)
             @Html.ValidationMessageFor(model => model.Category)
         </div>
 
-        <p>
+        <div class="form_row">
             <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+        </div>
+         </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+    }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
